@@ -1,0 +1,22 @@
+module mux_test;
+	reg w0, w1, s;
+	reg test;
+	wire f;
+	
+	initial begin
+		w0 = 0;w1=1, s=0;
+		test = s ? w1 : w0;
+		if (f != test) 
+			$display ("faild mux at A = %b, B = %b, s = %b, F = %b",a, b, s, f);
+		else;
+		#5;
+		s=1;
+		test = s ? w1 : w0;
+		if (f != test) 
+			$display ("faild mux at A = %b, B = %b, s = %b, F = %b",a, b, s, f);
+		else;
+	
+	end 
+	
+	endmodule
+	

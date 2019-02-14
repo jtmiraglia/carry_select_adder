@@ -1,0 +1,28 @@
+module carry_select_4bit(A, B, cin, S, cout);
+	input [3:0] A, B;
+	input cin;
+	output [3:0] S;
+	output cout;
+
+	wire [3:0] W0, W1;
+	wire [1:0] Wcout; //carry out bits for ripple carries for cin of 0 and 1
+
+	assign carry[0] = cin;
+
+	//ripple carry outputs for cin of 0 and 1
+	ripple_4bit rip0 (.A(A), .B(B), .cin(0'b0), .S(W0), .cout(Wcout[0]));
+	ripple_4bit rip1 (.A(A), .B(B), .cin(0'b1), .S(W1), .cout(Wcout[1]));
+	
+	//construct multiplexor gates to decide which ripple carry solution to use,
+	//select signal is cin (carry in)
+	genvar i;
+	generate begin:mux_loop
+		for (i = 0; i < 3; i = i +1) begin
+			multiplexor M0 (.w0(W0[i]), .w1(W1[i]), .s(cin));
+		end
+	endgenerate
+
+	//generate carrout bit
+	multiplexor M5 (.w0(Wcout[0]), .w1(Wcout[1]), .s(cin));
+
+endmodule

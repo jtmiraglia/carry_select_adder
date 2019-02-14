@@ -1,0 +1,14 @@
+module ripple_4bit(input A[3:0], B[3:0], output F[3:0]);
+	wire [4:0] carry; 
+	
+	
+	
+	genvar i;
+	generate begin
+		for (i = 0; i < 3; i = i +1;) begin
+			full_adder U1 (A[i], B[i], carry[i], F[i], carry[i+1]);
+		end
+	end
+	
+	
+endmodule

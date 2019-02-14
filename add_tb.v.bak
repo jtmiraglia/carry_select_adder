@@ -1,0 +1,17 @@
+module full_add_test;
+	reg a, b, cin;
+	reg test;
+	wire s;
+	
+	initial begin
+		#5;
+		a=0;b=0;cin=0;
+		test = a + b + cin;
+		if (s != test) 
+			$display ("faild full adder at A = %b, B = %b, cin = %b, F = %b",a, b, c0, f);
+		else
+	
+	end
+	
+	
+endmodule

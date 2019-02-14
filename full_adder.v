@@ -1,0 +1,13 @@
+module full_adder(input a0, b0, carry_in, output f0, carry_out);
+	wire c, d, e;
+	
+	//sum
+	xor(c, a0, b0);
+	xor(f0, c , carry_in);
+	
+	//carry out
+	and(d, c, carry_in);
+	and(e, a0, b0);
+	or(carry_out, d, e);
+	
+endmodule
