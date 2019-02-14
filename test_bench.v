@@ -20,8 +20,8 @@ module test;
 		check();	
 		
 		cin = 1;
-		A = 1;
-		B = 1;
+		A = 0;
+		B = 0;
 		check();
 		
 		A = 16'b111111111111111;
